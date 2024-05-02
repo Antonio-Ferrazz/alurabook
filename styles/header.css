@@ -1,0 +1,189 @@
+.Cabecalho__menu-hanburguer{
+    height: 24px;
+    width: 24px;
+    background-image: url("../img/Menu.svg");
+    background-repeat: no-repeat;
+    display: inline-block;
+
+}
+
+.Cabecalho{
+    height: 60px;
+    background-color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;   /* esse relative foi apenas para não ser static, para o absolute do "lista-menu" funcionar*/
+}
+
+.conteiner{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+#conteiner__itens{
+    gap: 20px;
+}
+
+.conteiner__botao:checked~.conteiner__rotulo>.Cabecalho__menu-hanburguer{ /* o "~" procura outro elemento que tenha a classe que está após ele e o "+" procura o elemento que está dentro do elemento anterior */
+    background: url(../img/Menu\ Aberto.svg);
+}
+
+.conteiner__botao:checked~.conteiner__rotulo{
+    background: var(--azulescuro);
+}
+
+.conteiner__rotulo{
+    padding: 1em;
+}
+
+.lista-menu{
+    left: 0%;
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 250px;
+    font-size: 16px;
+    line-height: 24px;
+
+}
+
+.conteiner__botao:checked ~ .lista-menu{
+    display: block;
+}
+
+.lista-menu__titulo, .lista-menu__item{
+    padding: 1em;
+    background-color: var(--branco);
+}
+
+.lista-menu__titulo{
+    color: var(--laranja);
+    font-family: Poppins;
+    font-weight: 700;
+
+}
+
+.lista-menu__link{
+    text-transform: uppercase;
+    font-family: Poppins;
+    font-weight: 400;
+    background: var(--azulescuro);
+    -webkit-background-clip: text;       /* esses wed é negocio de compatibilidade*/
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /*interesante ver depois*/
+}
+
+.conteiner__botao{
+    display: none;
+}
+
+.conteiner__logo{
+    display: none;
+}
+
+.opcoes{
+    display: none;
+}
+
+.conteiner__texto{
+    display: none;
+}
+
+
+/* Media Queries */
+
+@media screen and (min-width: 1024px) {
+
+    .conteiner__logo, .conteiner__logo--negrito{
+        font-family: var(--fontesecundaria);
+        font-size: 30px;
+        display: inline;
+        margin-top: 0.4em;
+    }
+
+    .conteiner__moba{
+        display: none;
+    }
+
+    #conteiner__itens{
+        gap: 35px;
+    }
+
+    .conteiner{
+        margin: 3em;
+    }
+
+    .conteiner__logo{
+        font-weight: 400;
+    }
+
+    .conteiner__logo--negrito{
+        font-weight: 700;
+    }
+
+    .opcoes{
+        display: flex;
+    }
+
+    .opcoes__item{
+        padding: 0 1em;
+    }
+
+    .opcoes__link{
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .favoritos__img, .Cabecalho__menu-hanburguer{
+        display: none;
+    }
+
+    .opcoes__botao:checked~.lista-menu2{
+        display: block;
+        width: 15em;
+        left:auto;
+    }
+
+    .opcoes__botao:checked~.opcoes__rotulo>.opcoes__item{
+        background: var(--azulescuro);
+        color: var(--branco);
+    }
+
+    .opcoes__item{
+        padding:2em 1em;
+    }
+
+    .lista-menu__item:hover{
+        background: var(--azulescuro);
+    }
+
+    .lista-menu__item:hover >.lista-menu__link{
+        -webkit-text-fill-color: var(--branco); /* esse web ai é por causa que a cor do texto é um background, e no caso ela anteriomente foi usada como transparente*/
+        text-decoration: none;
+    }
+}
+
+@media screen and (min-width: 1728px) {
+    .conteiner__link{
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        text-decoration: none;
+        color: var(--preto);
+
+    }
+
+    .opcoes{
+        margin-right: auto;
+    }
+
+    .conteiner__texto{
+        display: block;
+    }
+
+    .opcoes__item{
+        margin-top: 0.6em;
+    }
+}
